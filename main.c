@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -81,6 +82,21 @@ int main(void) {
 
         CHECK_SDL_CODE(SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255));
         CHECK_SDL_CODE(SDL_RenderClear(renderer));
+
+        for (size_t x = 0; x < SCREEN_WIDTH; x += 1) {
+            double camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
+            double ray_dir_x = dir_x + plane_x * camera_x;
+            double ray_dir_y = dir_y + plane_y * camera_x;
+
+            int map_x = (int)pos_x;
+            int map_y = (int)pos_y;
+
+            double delta_dist_x = (ray_dir_x == 0) ? 1e30 : fabs(1 / ray_dir_x);
+            double delta_dist_y = (ray_dir_y == 0) ? 1e30 : fabs(1 / ray_dir_y);
+
+            bool hit = false;
+        }
+
         SDL_RenderPresent(renderer);
     }
 

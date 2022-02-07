@@ -56,3 +56,5 @@ compile_commands.json
 
 # The executable
 raycaster
+
+.cache/clangd/index

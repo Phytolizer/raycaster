@@ -1,6 +1,6 @@
 CC = clang
 CFLAGS = -Wall -Wextra -Wpedantic -Wmissing-prototypes -std=c11 -ggdb `pkg-config --cflags sdl2`
-LIBS = `pkg-config --libs sdl2`
+LIBS = `pkg-config --libs sdl2` -lm
 
 .PHONY: all
 
